@@ -1,0 +1,252 @@
+:root {
+  --primary-color: #09fcfd;
+  --secondary-color: #510303;
+  --size-unit: 64px;
+  --ships-animation-time: 200ms;
+  --explosions-animation-time: 600ms;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  cursor: none;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(2, 39, 82, 0.911);
+  position: relative;
+}
+
+.information {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 32px;
+  z-index: 2;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(2, 39, 82, 0.911);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: auto;
+}
+.modal__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.modal__text {
+  font-size: 42px;
+  text-align: center;
+}
+.modal__button {
+  padding: 30px 15px;
+  background-color: transparent;
+  border: 3px solid var(--primary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 42px;
+  margin-top: 20px;
+  outline: none;
+  transition: box-shadow 0.1s ease-in;
+}
+.modal__button:hover {
+  box-shadow: 0px 0px 20px 5px var(--primary-color);
+}
+
+.enemy, .spaceship {
+  width: var(--size-unit);
+  height: var(--size-unit);
+  background-image: url(../images/ship.png);
+  position: fixed;
+  -webkit-animation: move-8-units-X var(--ships-animation-time) steps(8) infinite;
+          animation: move-8-units-X var(--ships-animation-time) steps(8) infinite;
+}
+
+.heart {
+  width: 32px;
+  height: 34px;
+  background-image: url(../images/heart.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: fixed;
+}
+
+.box-blue {
+  width: 30px;
+  height: 30px;
+  background-image: url(../images/box-blue.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: fixed;
+}
+
+.enemy {
+  background-image: url(../images/enemy.png);
+  -webkit-animation: move-5-units-X var(--ships-animation-time) steps(5) infinite;
+          animation: move-5-units-X var(--ships-animation-time) steps(5) infinite;
+}
+
+.enemy--big {
+  width: 128px;
+  height: 128px;
+  background-image: url(../images/enemy-big.png);
+  position: fixed;
+  -webkit-animation: move-enemy-big var(--ships-animation-time) steps(8) infinite;
+          animation: move-enemy-big var(--ships-animation-time) steps(8) infinite;
+}
+
+.explosion {
+  width: var(--size-unit);
+  height: var(--size-unit);
+  background-image: url(../images/explosion.png);
+  position: fixed;
+  -webkit-animation: move-17-units-X var(--ships-animation-time) steps(17) infinite;
+          animation: move-17-units-X var(--ships-animation-time) steps(17) infinite;
+}
+
+.explosion--big {
+  width: 128px;
+  height: 128px;
+  background-image: url(../images/explosion-big.png);
+  position: fixed;
+  -webkit-animation: move-enemy-big-explosion var(--ships-animation-time) steps(17) infinite;
+          animation: move-enemy-big-explosion var(--ships-animation-time) steps(17) infinite;
+}
+
+.missile--enemy {
+  background-image: url(../images/missile2.png);
+  background-size: contain;
+  width: 12px;
+  height: 24px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+}
+
+.missile {
+  background-image: url(../images/missile.png);
+  background-size: contain;
+  width: 12px;
+  height: 24px;
+  position: absolute;
+}
+
+.hide {
+  display: none;
+}
+
+.hit {
+  background-color: var(--secondary-color);
+}
+
+.addLife {
+  background-color: green;
+}
+
+@-webkit-keyframes move-8-units-X {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -512px;
+  }
+}
+
+@keyframes move-8-units-X {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -512px;
+  }
+}
+@-webkit-keyframes move-17-units-X {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1088px;
+  }
+}
+@keyframes move-17-units-X {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1088px;
+  }
+}
+@-webkit-keyframes move-5-units-X {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -320px;
+  }
+}
+@keyframes move-5-units-X {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -320px;
+  }
+}
+@-webkit-keyframes move-enemy-big {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1024px;
+  }
+}
+@keyframes move-enemy-big {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1024px;
+  }
+}
+@-webkit-keyframes move-enemy-big-explosion {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -2176px;
+  }
+}
+@keyframes move-enemy-big-explosion {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -2176px;
+  }
+}/*# sourceMappingURL=style.css.map */
