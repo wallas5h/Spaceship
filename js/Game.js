@@ -4,14 +4,14 @@ import { Heart } from "./Heart.js";
 import { Spaceship } from "./Spaceship.js";
 
 
-class Game {
+export class Game {
 
   htmlElements = {
     spaceship: document.querySelector('[data-spaceship]'),
     container: document.querySelector('[data-container]'),
     score: document.querySelector('[data-score]'),
     lives: document.querySelector('[data-lives]'),
-    modal: document.querySelector('.modal'),
+    modal: document.querySelector('[data-modal-game]'),
     scoreInfo: document.querySelector('[data-score-info]'),
     button: document.querySelector('[data-button]'),
   }
@@ -23,7 +23,7 @@ class Game {
   #enemies = [];
   #enemiesMissiles = [];
   #lives = null;
-  #score = null;
+  score = null;
   #enemiesInterval = null;
   #checkPositionInterval = null;
   #createEnemyInterval = null;
@@ -48,8 +48,8 @@ class Game {
     this.htmlElements.modal.classList.add('hide');
     this.#enemiesInterval = 30;
     this.#lives = 3;
-    this.#score = 0;
-    this.#frequencyBoxBonus = 70;
+    this.score = 0;
+    this.#frequencyBoxBonus = 70; // 70
     this.#intervalTimeCreateEnemy = 1500;
     this.#enemyBigCreateFrequency = 2;
     this.#updateLivesText();
@@ -67,7 +67,7 @@ class Game {
 
   endGame = () => {
     this.htmlElements.modal.classList.remove('hide');
-    this.htmlElements.scoreInfo.textContent = `You loose! Your score is: ${this.#score
+    this.htmlElements.scoreInfo.textContent = `You loose! Your score is: ${this.score
       }`;
     this.#enemies.forEach((enemy) => enemy.explode());
     this.ship.missiles.forEach((missile) => missile.remove());
@@ -222,23 +222,23 @@ class Game {
   }
 
   #updateScore = () => {
-    this.#score++;
-    if (!(this.#score % 4)) {
+    this.score++;
+    if (!(this.score % 4)) {
       this.#enemiesInterval--;
     }
     this.#updateScoreText();
 
-    if (this.ship.numberOfMissilesInOneShoot !== 5 && !(this.#score % this.#frequencyBoxBonus)) {
+    if (this.ship.numberOfMissilesInOneShoot !== 5 && !(this.score % this.#frequencyBoxBonus)) {
       // debugger;
       this.#boxBlueAddWeapon = new Box('box-blue', this.htmlElements.container);
       this.#boxBlueAddWeapon.init();
     }
 
-    if (this.#score % 100) {
+    if (!(this.score % 100)) {
       this.#intervalTimeCreateEnemy -= 100;
     }
 
-    if (this.#score % 140 && this.#score < 300) {
+    if (!(this.score % 140) && this.score < 300) {
       this.#frequencyBoxBonus += 30;
     }
 
@@ -277,7 +277,7 @@ class Game {
   }
 
   #updateScoreText = () => {
-    this.htmlElements.score.textContent = `Score: ${this.#score}`;
+    this.htmlElements.score.textContent = `Score: ${this.score}`;
   }
 
   #updateLivesText = () => {
@@ -347,7 +347,7 @@ class Game {
   }
 }
 
-window.onload = () => {
-  const game = new Game();
-  game.init();
-}
+// window.onload = () => {
+//   const game = new Game();
+//   game.init();
+// }

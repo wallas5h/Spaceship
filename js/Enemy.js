@@ -65,7 +65,7 @@ export class Enemy {
   #setShootInterval = () => {
     this.shootInterval = setInterval(() => {
       this.#shoot();
-    }, 3000)
+    }, 2000)
   }
 
   #shoot = () => {
