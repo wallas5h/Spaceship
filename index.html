@@ -19,17 +19,50 @@
         <article class="information__content" data-lives>Lives: 3</article>
       </section>
     </div>
-    <div class="modal hide">
+    <div class="modal " data-modal-game>
+      <div class="button__X">X</div>
       <div class="modal__content">
         <p class="modal__text" data-score-info>
           You loose! Start new game!
         </p>
         <button class="modal__button" data-button>New Game</button>
+        <button class="modal__button" data-button-submit>Submit Score</button>
+
       </div>
     </div>
+    <div class="modal " data-modal-entry>
+      <div class="modal__content">
+        <h1>Spaceship Invadiers</h1>
+        <div class="spaceship--small" data-spaceship-entry></div>
+        <button class="modal__button" data-modal-entry-start>Start The Game</button>
+        <button class="modal__button" data-modal-entry-scores>Best Players</button>
+      </div>
+    </div>
+    <div class="modal hide" data-modal-submit-score>
+      <div class="button__X">X</div>
+      <div class="modal__content">
+        <h1>Submit Score</h1>
+        <form action="" id="submit-score-form">
+          <p class="modal__text--small">Enter name: <input type="text" name="name" id="submit-score-name" required></p>
+          <button type="submit" class="modal__button button__small" data-button-submit-score-save>Save</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal hide" data-modal-best-players>
+      <div class="button__X">X</div>
+      <div class="modal__content">
+        <h1>Best Players</h1>
+        <ul class="playersList__container">
+          <li>adasdfa <span>200 pkt</span></li>
+          <li>bbb <span>200 pkt</span></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
-  <script src="./js/Game.js" type="module"></script>
+  <script src="./js/index.js" type="module"></script>
 
 </body>
 
