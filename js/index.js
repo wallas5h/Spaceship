@@ -1,6 +1,9 @@
 import { apiURL } from "./config/apiURL.js";
 import { Game } from "./Game.js";
 
+const game = new Game();
+let isGameIsInit = false;
+
 const htmlElemens = {
   container: document.querySelector('[data-container]'),
   spaceshipCursor: document.querySelector('[data-spaceship-entry]'),
@@ -22,13 +25,13 @@ const htmlElemens = {
 }
 
 
-const game = new Game();
 
 const eventListeners = () => {
 
-  setSpaceshipCursor();
+  // setSpaceshipCursor();
 
   htmlElemens.startBtn.addEventListener('click', handleStartGame);
+  // startBtn.addEventListener('click', handleStartGame);
 
   htmlElemens.saveScoreForm.addEventListener('submit', async (e) => handleSubmitScore(e));
 
@@ -90,9 +93,15 @@ const handleSubmitScore = async (e) => {
 
 
 function handleStartGame() {
+  console.log('start')
   htmlElemens.modalEntry.classList.add('hide');
-  game.init();
-  removeSpaceshipCursor();
+  if (!isGameIsInit) {
+    game.init();
+    isGameIsInit = true;
+  }
+  else {
+    game.newGame();
+  }
 }
 
 function setSpaceshipCursor() {

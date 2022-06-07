@@ -57,7 +57,7 @@ export class Game {
     this.ship.setPosition();
 
     this.#createEnemyInterval = setInterval(() => {
-      !this.#switchOfEnemies && this.#randomNewEnemy();  // enemy switch of
+      !this.#switchOfEnemies && this.#enemies.length < 20 && this.#randomNewEnemy();  // enemy switch of
     }, this.#intervalTimeCreateEnemy)
 
     this.#checkPositionInterval = setInterval(() => {
