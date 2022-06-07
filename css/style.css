@@ -20,11 +20,25 @@ body {
   cursor: none;
 }
 
-.container {
+.wrapper {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 1000px;
+  height: 800px;
   background-color: rgba(2, 39, 82, 0.911);
   position: relative;
+}
+@media (max-width: 1000px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+  }
 }
 
 .information {

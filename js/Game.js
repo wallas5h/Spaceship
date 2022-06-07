@@ -29,7 +29,7 @@ class Game {
   #createEnemyInterval = null;
   #heartAddLive = null;
   #boxBlueAddWeapon = null;
-  #switchOfEnemies = false;
+  #switchOfEnemies = true;
   #isHeartWasUse = false;
   #frequencyBoxBonus = null;         // default 70
   #intervalTimeCreateEnemy = null;  // default 1500

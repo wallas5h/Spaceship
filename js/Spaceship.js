@@ -19,6 +19,7 @@ export class Spaceship {
   }
 
   init = () => {
+    console.log(this.container)
     this.setPosition();
     this.#eventListeners();
     this.#gameLoop();
